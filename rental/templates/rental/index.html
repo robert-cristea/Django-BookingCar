@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Rental</title>
+</head>
+<body>
+<h1 style="font-family:verdana;">Cars For Rent</h1>
+<form method="get" action="{%  url 'rental:viewCar' %}">
+    {% csrf_token %}
+    {%  for c in list %}
+        <p style="font-size:130%;font-family:verdana"> {{ c.carName }} <br/></p>
+        <p>
+        <ul>
+        <li style="font-family:verdana;">Doors: {{ c.numDoors }}</li>
+        <li style="font-family:verdana;">Seats: {{ c.numSeats }}</li>
+        <li style="font-family:verdana;">Transmission: {{ c.gear }}</li>
+        <li style="font-family:verdana;">Price/Day: {{ c.priceDay }} AED</li>
+        <li style="font-family:verdana;">Price/Week: {{ c.priceWeek }} AED</li>
+        </ul>
+
+        <input type="submit" value="Book Car" name="{{ c.id }}" id="id" /><br/><br/></p>
+    {% endfor %}
+</form>
+</body>
+</html>
