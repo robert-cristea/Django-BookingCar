@@ -1,45 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends './base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>View</title>
-</head>
 
-<body>
-    {% csrf_token %}
-    <p style="font-size:130%;font-family:verdana"> {{ car.carName }} <br /></p>
-    <p>
-    <ul>
-        <li style="font-family:verdana;">Doors: {{ car.numDoors }}</li>
-        <li style="font-family:verdana;">Seats: {{ car.numSeats }}</li>
-        <li style="font-family:verdana;">Transmission: {{ car.gear }}</li>
-        <li style="font-family:verdana;">Price/Day: {{ car.priceDay }} AED</li>
-        <li style="font-family:verdana;">Price/Week: {{ car.priceWeek }} AED</li>
-    </ul>
-    <br /><br />
-    <form method="POST" action="{%  url 'rental:book-car' %}">
-        {% csrf_token %}
-        <input type='text' id='car-id' value={{car.id}} name="carId"/>
-        <label for="start">Start date:</label>
-        <input type="date" id="start" name="start-date" value="2021-01-01" min="2021-01-01" max="2030-12-31">
-        <label for="end">End date:</label>
-        <input type="date" id="end" name="end-date" value="2021-01-01" min="2021-01-01" max="2030-12-31">
-        <input type="submit" value="Book Car" name="{{ c.id }}" id="id" /><br /><br /></p>
-    </form>
-
-    {%if message %}
+{% block content %}
+<div class="d-flex pt-5 justify-content-center w-100">
+    <div class="w-50">
+        {%if message %}
         {% if state == 0 %}
-            <div style="background-color: pink; padding:5px 10px; border-radius: 8px; text-align: center;">
-                <h4>{{message}}</h4>
-            </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
         {% else %}
-            <div style="background-color: lightblue; padding:5px 10px; border-radius: 8px; text-align: center;">
-                <h4>{{message}}</h4>
-            </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         {% endif %}
-    {% endif %}
+        {% endif %}
+    </div>
 
-</body>
+</div>
+<div class="d-flex align-items-center justify-content-center pt-5">
+    <div>
+        <p style="font-size:130%;font-family:verdana"> {{ car.carName }} <br /></p>
+        <ul>
+            <li style="font-family:verdana;">Doors: {{ car.numDoors }}</li>
+            <li style="font-family:verdana;">Seats: {{ car.numSeats }}</li>
+            <li style="font-family:verdana;">Transmission: {{ car.gear }}</li>
+            <li style="font-family:verdana;">Price/Day: {{ car.priceDay }} AED</li>
+            <li style="font-family:verdana;">Price/Week: {{ car.priceWeek }} AED</li>
+        </ul>
+        <br /><br />
+        <form method="POST" class="d-flex flex-wrap flex-column" action="{%  url 'rental:book-car' %}">
+            {% csrf_token %}
+            <input type='hidden' id='car-id' value={{car.id}} name="carId" />
+            <label for="start">Start date:</label>
+            <input type="date" id="start" name="start-date" value="2021-01-01" min="2021-01-01" max="2030-12-31">
+            <label for="end">End date:</label>
+            <input type="date" id="end" name="end-date" value="2021-01-01" min="2021-01-01" max="2030-12-31">
+            <button class="btn btn-primary mt-4" type="submit" value="Book Car" name="{{ c.id }}" id="id">Book
+                Car</button>
+        </form>
+    </div>
+</div>
 
-</html>
+{% endblock %}

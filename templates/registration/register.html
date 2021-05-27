@@ -1,0 +1,83 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="account-pages mt-5 mb-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card mb-0">
+                        <!-- Logo-->
+                        <div class="card-body pt-4 pb-0 text-center">
+                            <a href="#">
+                                <span><img src="{% static 'images/logo-dark.png' %}" alt=""></span>
+                            </a>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Free Registration</h4>
+                                <p class="text-muted mb-4">Don't have an account? Create your account, it takes less
+                                    than a minute </p>
+                            </div>
+
+                            <form action="{% url 'register' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="username">User Name</label>
+                                    <input class="form-control" type="text" id="username"
+                                           placeholder="Enter your username" name="username"
+                                           required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input class="form-control" type="email" id="email" required name="email"
+                                           placeholder="Enter your email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password1">Password</label>
+                                    <input class="form-control" type="password" required id="password1" name="password1"
+                                           placeholder="Enter your password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password2">Confirm Password</label>
+                                    <input class="form-control" type="password" required id="password2" name="password2"
+                                           placeholder="Confirm your password">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signup"
+                                               required>
+                                        <label class="custom-control-label" for="checkbox-signup">I accept
+                                            <a href="#" class="text-muted">Terms &amp; Conditions</a></label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-8">
+                                        <div class="form-group mb-0">
+                                            <button class="btn btn-primary btn-block" type="submit"> Sign Up</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <p class="text-muted">Already have account?
+                                        <a href="{% url 'login' %}" class="text-muted ml-1"><b>Log In</b></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </div>
+{% endblock %}

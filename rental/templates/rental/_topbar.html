@@ -1,0 +1,38 @@
+{% load static %}
+<div class="navbar-custom">
+    <!------------------------------------->
+    <!-- right side topbar content start -->
+    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+        <li class="dropdown notification-list">
+            <a class="nav-link dropdown-toggle nav-user arrow-none mx-0" data-toggle="dropdown" href="#"
+               role="button" aria-haspopup="false" aria-expanded="false">
+                <span class="account-user-avatar">
+                    <img src="{% static 'images/users/avatar-1.jpg' %}" alt="user-image"
+                         class="rounded-circle">
+                </span>
+                <span>
+                    <span class="account-user-name">{{ user.username }}</span>
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                <a href="{% url 'logout' %}" class="dropdown-item"><i class="feather icon-power text-danger"></i>
+                    &nbsp; Log Out</a>
+            </div>
+        </li>
+    </ul>
+    <!-- right side topbar content end -->
+    <!------------------------------------->
+
+    <!---------------------------------------------->
+    <!-- Left side topbar content Start -->
+
+
+    <div class="header-search">
+        <span class="account-user-avatar" >
+            <a href="{% url 'rental:index' %}"><img src="{% static 'images/logo-dark.png' %}" alt="user-image"></a>
+        </span>
+    </div>
+    <!-- Left side topbar content end -->
+    
+</div>

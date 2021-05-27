@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from accounts.models import Profile
 # Create your models here.
 
 
@@ -19,7 +20,6 @@ class Car(models.Model):
 
 class Booking(models.Model):
     carID = models.ForeignKey(Car, on_delete=models.CASCADE)
-    # bookingID = models.IntegerField()
     startDate = models.DateField()
     endDate = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -34,17 +34,17 @@ class UserType(models.Model):
 
 
 
-class User(models.Model):
-    username = models.CharField(max_length=30)
-    password = models.CharField(max_length=30)
-    firstName = models.CharField(max_length=20)
-    lastName = models.CharField(max_length=30)
-    email = models.CharField(max_length=30)
-    phoneNumber = models.CharField(max_length=10)
-    usertype = models.ForeignKey(UserType, on_delete=models.CASCADE)
+# class User(models.Model):
+#     username = models.CharField(max_length=30)
+#     password = models.CharField(max_length=30)
+#     firstName = models.CharField(max_length=20)
+#     lastName = models.CharField(max_length=30)
+#     email = models.CharField(max_length=30)
+#     phoneNumber = models.CharField(max_length=10)
+#     usertype = models.ForeignKey(UserType, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.firstName + " " + self.lastName
+    # def __str__(self):
+    #     return self.firstName + " " + self.lastName
 
 
 

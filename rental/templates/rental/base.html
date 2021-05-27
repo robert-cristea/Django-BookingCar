@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <title>Car Rental</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Beethemesdesign" name="author"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+
+
+    <!-- third party css -->
+    <link href="{% static 'css/vendor/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- third party css end -->
+
+    <!-- Required css -->
+    <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet" type="text/css"/>
+    {% block style %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div class="wrapper">
+
+    <!-- ============================================================= -->
+    <!-- ===============    side menu content start  ================= -->
+    <!-- ============================================================= -->
+    <!-- ============================================================= -->
+    <!-- ===============     side menu content End   ================= -->
+    <!-- ============================================================= -->
+
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="" style="overflow: hidden;padding: 5px 20px;min-height: 80vh;">
+        <div class="content">
+
+            <!-- ============================================================= -->
+            <!-- ===============    Top bar header content start  ================= -->
+            <!-- ============================================================= -->
+            {% include 'rental/_topbar.html' %}
+            <!-- ================================================================== -->
+            <!-- ===============    Top bar header content end  ================= -->
+            <!-- ================================================================== -->
+
+            {% block content_header %}
+            {% endblock %}
+            <!-- Start Content-->
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </div>
+    <!-- container -->
+    <!-- content -->
+    <div>
+        <!-- ============================================================= -->
+        <!-- ===============    footer content start  ================= -->
+        <!-- ============================================================= -->
+
+
+        <!-- ============================================================= -->
+        <!-- ===============    footer content start  ================= -->
+        <!-- ============================================================= -->
+
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+{% block script %}
+    <!-- Required js -->
+    <script src="{% static 'js/app.js' %}"></script>
+
+    <!-- third party js -->
+    <script src="{% static 'js/vendor/Chart.bundle.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-jvectormap-1.2.2.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-jvectormap-world-mill-en.js' %}"></script>
+    <!-- third party js ends -->
+
+    <!-- third party:js -->
+    <script src="{% static 'js/vendor/apexcharts.min.js' %}"></script>
+
+    <!-- demo app -->
+{#    <script src="{% static 'js/demo/demo.dashboard.js' %}"></script>#}
+    <!-- end demo js-->
+{% endblock %}
+{% block extra_script %}
+{% endblock %}
+</body>
+
+</html>
